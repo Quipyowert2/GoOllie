@@ -1,0 +1,29 @@
+License for dynamic library linked to by Go Ollie:
+	
+ "Go Ollie includes portions of the PopCap Games Framework
+    (http://developer.popcap.com/)."
+
+libtuxcap.so.3.3 - COPYING_TUXCAP - http://sourceforge.net/projects/tuxcap 
+
+-------------------------------------
+
+Licenses for dynamic libraries linked to by libtuxcap.so.3.3:
+	
+ this software is based in part on the work of
+	the Independent JPEG Group 
+
+libSDL-1.2.so.0, libSDL_mixer-1.2.so.0 - LGPL v2.1 - www.libsdl.org
+
+libGLU.so.1 - SGI Free software license B version 2.0  - http://oss.sgi.com/projects/FreeB
+
+libjpeg.so.62 - README_JPEG - http://www.ijg.org
+
+libMagick.so.9, libMagick++.so.9, libWand.so.9 - LICENSE_IMAGEMAGICK - www.imagemagick.org
+
+libogg.so.0 - COPYING_OGG - www.xiph.org
+
+libpng12.so.0 - LICENSE_PNG - www.libpng.org
+
+libpython2.5.so.1.0 - LICENSE_PYTHON - www.python.org
+
+libvorbisfile.so.3, libvorbis.so.0 - COPYING_VORBIS - www.vorbis.com

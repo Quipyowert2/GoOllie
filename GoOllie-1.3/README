@@ -1,0 +1,112 @@
+--------------------------------------------------------------
+Go Ollie ReadMe
+--------------------------------------------------------------
+
+(c) Charlie Dog Games 1st September 2008
+
+This document provides information about "Go Ollie". A game by "Charlie Dog Games" 
+
+CHARLIE DOG GAMES
+PO BOX 1113
+Queenbeyan
+NSW2620
+Australia
+
+--------
+CONTENTS
+--------
+
+   1. SYSTEM REQUIREMENTS
+   2. INSTALLATION TIPS
+   3. TROUBLESHOOTING
+   4. Credits
+   5. Known Issues
+   6. Game Play Hints
+
+
+-------------------
+SYSTEM REQUIREMENTS
+-------------------
+
+glibc 2.3.2
+
+PIII 800 MHz CPU or better
+128 MByte system ram or better
+Hardware Video support recommended
+Minimum graphics resolution 800*600
+180 MByte of Hard Disc required for installation
+
+tested on: 
+
+    * Ubuntu Dapper Drake - 32 bit
+    * Ubuntu Gutsy Gibbon - 32 bit
+    * Ubuntu Hardy Heron - 32 bit
+    * Ubuntu Hardy Heron - 64 bit
+    * Open Suse 11 - 32 bit
+    * Fedora 9 - 32 bit
+    * Mandriva 2008 - 32 bit
+    * Debian Etch - 32 bit 
+    * Slackware 12.1 - 32 bit
+
+-----------------
+HOWTO BUILD
+
+cd build
+cmake ..
+make
+-----------------
+
+-----------------
+INSTALLATION TIPS
+-----------------
+Ensure that at least 180 MByte of space is available on the hard disc before installing and running the game.
+
+---------------
+TROUBLESHOOTING
+---------------
+Users who have older machines (pre-PIII) may find that they have low frame rate issues.  In this case the "Detail Option" in the "Options" menu may need to be adjusted to "Low Detail".  To do this, click on the "Options" text in the main menu. Then click on the "Detail Options" text until it reads "Low".
+
+Note that the detailed backdrops only appear if there is hardware support for video.
+
+-------
+Credits
+-------
+Game design and game code - Charlie Dog
+Art - Simon Lissaman
+Music - Michael Watts / Encore Music
+GNU/Linux port - W.P. van Paassen
+This product includes portions of the PopCap Games Framework (http://developer.popcap.com/)
+Python integration into Popcap framework - Jarrad Woods
+Powered by Tuxcap - http://sourceforge.net/projects/tuxcap
+Special thanks to my wife and children for their incredible patience and understanding.
+
+------------
+Known Issues
+------------
+When run in windowed mode on low end machines frame rate may not be constant.  The developer recommends running the game in full screen mode and on low end machines the "detail option" should be set at "low".
+
+---------------
+Game Play Hints
+---------------
+Always try to have at least one level of scaling for Ollie by getting a combo.  This provides shields, lets you jump higher and in the later stages of the game provides additional powers.
+
+To get a high score, try to get as many combos as possible as they provide a score multiplier.  One level of multiplier is given for each combo collected.
+
+If the trail catches fire you can put it out by getting a 3 of a kind match
+
+Ghosts can only be stunned using the Snake Quake
+
+The fairy will collect coins and power ups
+
+Try to get the magnets as these automatically collect the coins for you
+
+When using the dash power up it works better if you click in the top half of the snake
+
+Both Dash and Smash Jump can be used to stun the enemy.  
+
+If you find a platform with a lot of coins on it and you don't have time to get them all, perform a Smash Jump to collect all the coins on the platform in one go and this kills any snails on the platform.
+
+Try to stay in the middle of the screen when it is scrolling
+
+Once the story mode is unlocked, play through the action mode and try to get as higher score as possible.  Action mode high scores are recorded in the high score table.
+
