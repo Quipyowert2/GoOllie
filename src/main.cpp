@@ -30,7 +30,7 @@ int main(int argc, char** argv) {
 
   PycapApp app;
 
-  SetAppResourceFolder("/usr/share/games/goollie");
+  app.SetAppResourceFolder("/usr/share/games/goollie");
 
   app.Init(argc, argv);
   app.Start();
