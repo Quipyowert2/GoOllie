@@ -3131,6 +3131,7 @@ class Player(physicsObject):
                 return 0
           
     def getMouseControl(self,delta):
+        global globalOldPlatformOn
         #don't let the player go beyond the finish platform
        # oldX = self.x
 
@@ -3138,12 +3139,10 @@ class Player(physicsObject):
 #            setglobalDebug1(self.moveTargetObject.x)
         #setglobalDebug1(0)        
         if checkKeyNoRepeat(keyMap.dashKey.keyValue) and dashEnabled:
-            global globalOldPlatformOn
             globalOldPlatformOn = globalPlayer.PlatformOn
             globalPlayer.dashSelected = 1
             
         if  checkKeyNoRepeat(keyMap.smashKey.keyValue) and smashEnabled:
-            global globalOldPlatformOn
             globalOldPlatformOn = globalPlayer.PlatformOn
             globalPlayer.smashSelected = 1
 
