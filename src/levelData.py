@@ -9,14 +9,14 @@ levelMusic4 = ["Level4","level4Win","level4Lose"]
 menuSong = "Menu"
 storyScreenSong = "cutScene"
 
-Red,Green,Blue,Orange,Purple,Yellow,White,Black,Stripe = range(9)
+Red,Green,Blue,Orange,Purple,Yellow,White,Black,Stripe = list(range(9))
 #tony below is only needed as interim step
 jewelColour = ['Red','Green','Blue','Orange','Purple','Yellow','White','Black','Truck'] 
 jewel1 = ['Ball','Bear','Car','Block','Hoop','Top','Drum','Panda','Truck']
 jewel2 = ['Amethyst','Citrine','Fanta','Ruby','Sapphire','Topaz','Emerald','White','Truck']
 jewel3 = ['Flower01','Flower02','Flower03','Flower04','Flower05','Flower06','Flower07','Flower08','Truck']
 jewel4 = ['Fruit01','Fruit02','Fruit03','Fruit04','Fruit05','Fruit06','Fruit07','White','Truck']
-DynamicPlatform,DynamicVerticalPlatform,FinishPlatform,platform100,platform200,platform400,StagingPlatform,stem100,stem200,stem400,ExitPlatform=range(11)
+DynamicPlatform,DynamicVerticalPlatform,FinishPlatform,platform100,platform200,platform400,StagingPlatform,stem100,stem200,stem400,ExitPlatform=list(range(11))
 
 DynamicPlatformWood = ['DynamicPlatformWood']
 DynamicPlatformVerticalWood=['DynamicPlatformVerticalWood']

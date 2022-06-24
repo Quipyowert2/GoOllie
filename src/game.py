@@ -34,7 +34,7 @@ editorEnabled = 1
 
 availableLanguageNames = ["English","Spanish"]
 #enumerated list
-English,Spanish = range(2)
+English,Spanish = list(range(2))
 
 #to check which language is selected you can do something like:
 
@@ -168,7 +168,7 @@ class smartBombClass:
 smartBomb =  smartBombClass()       
 
 class Medalion:
-    Hang,Smash,Stun,Dash,Speed,Fairy = range(6)
+    Hang,Smash,Stun,Dash,Speed,Fairy = list(range(6))
     graphicsBig = ["BigAmuletUnited01","BigAmuletUnited02","BigAmuletUnited03","BigAmuletUnited04","BigAmuletUnited05","BigAmuletUnited06"]
     graphicsSmall = ["SmlAmuletUnited01","SmlAmuletUnited02","SmlAmuletUnited03","SmlAmuletUnited04","SmlAmuletUnited05","SmlAmuletUnited06"]
     active = []
@@ -285,7 +285,7 @@ def setUpPredictionTable(Gy,Vx,Vy):
     table = []
     YMax = 0
     firstEntry=0
-    for x in xrange(800):
+    for x in range(800):
         value1 = x/Vx
         value2 = value1*Gy/2.0
         value3 = value1*(Vy+value2)
@@ -307,7 +307,7 @@ def setUpPredictionTableSimple(Gy,Vx,Vy):
     table.append(0)     #reserve first value for max
     YMax = 0
     firstEntry=0
-    for x in xrange(800):
+    for x in range(800):
         value1 = x/Vx
         value2 = value1*Gy/2.0
         value3 = value1*(Vy+value2)
@@ -501,8 +501,8 @@ ScreenMessages = None
 comboLevel = 0
 comboScale = .4
 editorMoveSpeed = 2
-keyArray = range(512)
-keyRepeatArray = range(512)
+keyArray = list(range(512))
+keyRepeatArray = list(range(512))
 downKey= 0
 matchedTiles = []
 metaGame= 4
@@ -620,7 +620,7 @@ def initialiseGame():
     global renderMode
     thisHighScoreIDX = 100
 
-    for key in xrange(512):
+    for key in range(512):
         keyArray[key] = 0
         keyRepeatArray[key] = 0 
 
@@ -2905,7 +2905,7 @@ def removeAllCombo():
     if cheatCanvas.AllPowerOn == 0:  
        # print "removing combo"
         if(globalPlayer!=None):
-            for count in xrange(comboLevel):
+            for count in range(comboLevel):
                 type = WorldTypes.PlayerGhostDown 
                 ghost  = addObject(nextID,globalPlayer.x,globalPlayer.y,type)
                 ghost.y_speed += count
@@ -3883,7 +3883,7 @@ class CellarWheel(WorldObject):
     heightSmall = 0
     def spawn(self):
         self.platforms = []
-        for platform in xrange(int(self.numberPlatforms)):
+        for platform in range(int(self.numberPlatforms)):
             type = WorldTypes.CellarRotatingPlatform #tony - for now we'll not bother with random here
             object = addObject(nextID,0,0,type)
             self.platforms.append(object)
@@ -3952,7 +3952,7 @@ class CellarWheel(WorldObject):
         self.centre1Y = self.y+(self.height/2) + self.distance1*math.cos(self.angle1)
         self.centre2X = self.x+(self.width/2) - self.distance1*math.sin(self.angle1)
         self.centre2Y = self.y+(self.height/2) - self.distance1*math.cos(self.angle1)  
-        for platform in xrange(int(self.numberPlatforms)):   
+        for platform in range(int(self.numberPlatforms)):   
             oldX = self.platforms[platform].x
             oldY = self.platforms[platform].y
             thisAngle = platform/(self.numberPlatforms/2.0)*fullRotation
@@ -4009,7 +4009,7 @@ class SmallCellarWheel(WorldObject):
     centre1Y = 0
     def spawn(self):
         self.platforms = []
-        for platform in xrange(int(self.numberPlatforms)):
+        for platform in range(int(self.numberPlatforms)):
             type = WorldTypes.CellarRotatingPlatform #tony - for now we'll not bother with random here
             object = addObject(nextID,0,0,type)
             self.platforms.append(object)
@@ -4059,7 +4059,7 @@ class SmallCellarWheel(WorldObject):
         #rotate us           
         self.centre1X = self.x+(self.width/2)
         self.centre1Y = self.y+(self.height/2)  
-        for platform in xrange(int(self.numberPlatforms)):   
+        for platform in range(int(self.numberPlatforms)):   
             oldX = self.platforms[platform].x
             oldY = self.platforms[platform].y
             thisAngle = platform/(self.numberPlatforms)*fullRotation
@@ -4094,7 +4094,7 @@ class RotatingPlatformSpawn(WorldObject):
     dynamic = 1
     numberPlatforms = 8.0
     def spawn(self):
-        for platform in xrange(int(self.numberPlatforms)):
+        for platform in range(int(self.numberPlatforms)):
            # if(levelMetaData.RandomTiles==0):
             type = WorldTypes.RotatingPlatform #tony - for now we'll not bother with random here
            # else:
@@ -4141,7 +4141,7 @@ class CoinWheel(RotatingPlatformSpawn):
     def spawn(self):
         count = 0
         global coinsSpawned
-        for platform in xrange(int(self.numberPlatforms)):
+        for platform in range(int(self.numberPlatforms)):
             type = WorldTypes.RotatingPlatform #tony - for now we'll not bother with random here
             index = objects.index(addObject(nextID,0,0,type))
             objects[index].angle = platform*(fullRotation)/self.numberPlatforms
@@ -4327,7 +4327,7 @@ class Conveyor(WorldObject):
     speed = 1.0
     placeable = 0
     def spawn(self):
-        for platform in xrange(int(self.numberPlatforms)):
+        for platform in range(int(self.numberPlatforms)):
             type = WorldTypes.ConveyorPlatform 
             object = addObject(nextID,0,0,type)
             object.x= self.x + (platform/self.numberPlatforms * self.width)
@@ -6169,7 +6169,7 @@ class SpawnDiamond(PlatormSpawner):
         
     def setUpSpawn(self,x,baseY):
         y = baseY - (((self.toSpawn-1.0)/2.0)*self.y_scale)
-        for count in xrange(self.toSpawn): 
+        for count in range(self.toSpawn): 
             self.doSpawn(x,y)
             y += self.y_scale
         self.toSpawn += self.spawnDirection
@@ -6417,7 +6417,7 @@ def SaveLevelData(levelName):
         try:
             os.mkdir(localAppData+"\\GoOllie\\levels")
         except:
-            print "directory found"
+            print("directory found")
         saveFile = open( localAppData+"\\GoOllie\\levels\\"+levelName+".jld", "w" )
     saveFile.write(str(levelMetaData.currentSectionNumber)+"\n") #write section number
     saveFile.write(str(levelMetaData.RandomTiles)+"\n") #write jewel option numbers
@@ -6474,7 +6474,7 @@ def tickRandomEnemySpawn(delta):
                 numberToSpawn = random.randint(1,numberRange)
                 typeToSpawnIdx = random.randint(0,spawnTypeRange)
                 x = cameraX+1000
-                for a in xrange(numberToSpawn):
+                for a in range(numberToSpawn):
                     y = random.randint(150,450)
                     object = addObject(nextID,x,y,randomEnemyTypes[typeToSpawnIdx])
                     x += 80
@@ -7073,7 +7073,7 @@ def loadSounds(root):
 
 def EmptyGrid():
     global grid
-    for row in xrange(len(grid)):
+    for row in range(len(grid)):
         grid[row] = []
     fillGrid()
 
@@ -7090,7 +7090,7 @@ def AddToGrid(jewelIDX,row,NotDummy):
     row = (y_max/GridPitchY)-row
     row = int(row)-1
     if(row<0 or row > 23):
-        print("error row out of range in add to grid",row)
+        print(("error row out of range in add to grid",row))
     else:
         tile = TileObject()
         #colour is only needed as an interim step!
@@ -7157,7 +7157,7 @@ def rowMatch(row):
     matched = grid[row][0].colour
     if(rowLength>3):
         rowLength =3
-    for tileIDX in xrange(rowLength):
+    for tileIDX in range(rowLength):
         tile = grid[row][tileIDX]
         if(tile.YOffset>0 or tile.XOffset>0 or (tile.toRemove!=0 and tile.toRemove != RemoveCount) or tile.colour != matched):          
             return 0
@@ -7197,7 +7197,7 @@ def testRow(row):
         return 0
     if(length>3):
         length = 3
-    for collumn in xrange(length) :
+    for collumn in range(length) :
         matched = 1
         colour = grid[row][collumn].colour
         count = 1
@@ -7221,7 +7221,7 @@ def checkRow(row,NotDummy,orientation):
     if(length>3):
         length = 3
     if(orientation ==VERTICAL):
-        for collumn in xrange(length):
+        for collumn in range(length):
             x=x+GridPitchY
             matchedTiles = []
             if(grid[row][collumn].checked==0):
@@ -7269,7 +7269,7 @@ def checkForNewPatterns(NotDummy):
     clearchecks()
     y = 0
     foundToggle = 1
-    for row in xrange(len(grid)):
+    for row in range(len(grid)):
         foundV += checkRow(row,NotDummy,VERTICAL)
         foundH += checkRow(row,NotDummy,HORIZONTAL)   
         if((foundV>0 or foundH>0) and foundToggle):
@@ -7372,7 +7372,7 @@ def dropRow(tile,row):
     #drop all the tiles in the collumn
     for FromRow in grid[rowIDX+1:]:
         if(rowIDX+1>len(grid) or rowIDX<0):
-            print("trying to index of end of grid",rowIDX)
+            print(("trying to index of end of grid",rowIDX))
         else:
             ToRow = grid[grid.index(FromRow)-1]
             ToRow[collumnIDX].colour = FromRow[collumnIDX].colour
@@ -7790,7 +7790,7 @@ class trailObject:
         if self.x < cameraX+15 and levelMetaData.gridDeath:
             global firstEdge
             if firstEdge:
-                particlesToDo = xrange(int((dangerCount+80)/80))
+                particlesToDo = range(int((dangerCount+80)/80))
                 for count in particlesToDo:
                     self.edgeExplosion(cameraX,2,(dangerCount+120)/120.0)
             firstEdge = 0
@@ -8016,7 +8016,7 @@ class trailGameClass:
     def testForThree(self):
         trailLength = len(self.trail)
         if trailLength >= 3:
-            for index in xrange(trailLength-2):
+            for index in range(trailLength-2):
                 if (self.trail[index].graphic == self.trail[index+1].graphic
                 and self.trail[index+1].graphic == self.trail[index+2].graphic):
                     if (self.trail[index].isAtRest() 
@@ -8029,7 +8029,7 @@ class trailGameClass:
         lengthTrail = len(self.trail)
         found = 0
         if lengthTrail>1:
-            for index in xrange(lengthTrail-1):
+            for index in range(lengthTrail-1):
                 if self.trail[index].jewelIdx == removeIdx:
                     self.trail[index+1].distance +=  self.trail[index].distance  
                     self.trail[index+1].speed = 0    
@@ -9012,7 +9012,7 @@ def checkSpawnCollision(x,y):
     return 0    
 
 def randomAdditionSpawns(base_x):
-  for count in xrange(platformsToSpawn):
+  for count in range(platformsToSpawn):
       x = random.randint(int(base_x-150),int(base_x))
       y = random.randint(1,12)
       y *= 40 
@@ -9049,7 +9049,7 @@ def tickObjects(delta):
     global solidObjects
     numberObjects = 0
     numberSolidObjects = 0
-    solidObjects = filter(testForSolid,objects)
+    solidObjects = list(filter(testForSolid,objects))
 #    solidObjects = []
 #    for thisObject in objects:
 #        if thisObject.solid or thisObject == globalPlayer or thisObject == globalFairy:
@@ -9434,7 +9434,7 @@ def RenderLives():
         liveString = " x "+str(lives)
         drawStringDropShadow(liveString,ThisX-90,55,60,200,0)         
     else:
-        for life in xrange(lives):
+        for life in range(lives):
             ThisX -= 44
             PC.drawImage( JPG_Resources['Life'], ThisX, 5)
             
@@ -9885,7 +9885,7 @@ def InitialiseObjectIcons():
     ScreenMessages.clearMessages()
 #    print "in editor 2",editorScrollBar,(int(editorScrollBar)*iconsWide)
  #   for object in AllWorldObjects[editorScrollBar:]:
-    for objectIndex in xrange(len(AllWorldObjects)):
+    for objectIndex in range(len(AllWorldObjects)):
         index = objectIndex+(int(editorScrollBar)*iconsWide)
         if displayCount<displayRange and index < len(AllWorldObjects):
             object = AllWorldObjects[index]
@@ -10648,7 +10648,7 @@ levelCompleteCanvas = levelCompleteScreen()
 class inGameMenuManagerClass :
     screens = [None,gameOverCanvas,levelCompleteCanvas]
     active = 0
-    inactive,gameOverCanvas,levelCompleteCanvas = xrange(3)
+    inactive,gameOverCanvas,levelCompleteCanvas = range(3)
     
     def tick(self,delta):
         if self.active:
@@ -12418,7 +12418,7 @@ class profile:
         self.tutorials = 1
         self.currentLanguage = 0
         index = 0
-        for map in xrange(len(levelData.storyCampaign)):
+        for map in range(len(levelData.storyCampaign)):
             newMapData = mapData(index)
             self.campaignMaps.append(newMapData)
             index += 1
@@ -12427,7 +12427,7 @@ profiles = [profile(0),profile(1),profile(2),profile(3),profile(4),profile(5)]
 
     
 class AdaptiveDifficultyManager:
-    terrible,poor,average,good,great= range(5)
+    terrible,poor,average,good,great= list(range(5))
     streak = 0
     gameMode = average
     max = 900  #must be less than maximum compensator threshold
@@ -12970,7 +12970,7 @@ sellUpExitCanvas = sellUpScreenExit()
         
 
 class menuItems: 
-    game,highScoreCanvas,optionsCanvas,storyCanvas,nameCanvas,profileCanvas,cutScene,mainScreenCanvas,replayLevel,welcomeCanvas,cheatCanvas,arcadeChoiceCanvas,creditCanvas,sellUpExitCanvas,arcadeLevel,instructionListCanvas,instructionCanvas,sellUpCanvas = range(18)
+    game,highScoreCanvas,optionsCanvas,storyCanvas,nameCanvas,profileCanvas,cutScene,mainScreenCanvas,replayLevel,welcomeCanvas,cheatCanvas,arcadeChoiceCanvas,creditCanvas,sellUpExitCanvas,arcadeLevel,instructionListCanvas,instructionCanvas,sellUpCanvas = list(range(18))
     
 menuClasses = [notUsed,highScoreCanvas,optionsCanvas,storyCanvas,nameCanvas,profileCanvas,cutScene,mainScreenCanvas,notUsed,welcomeCanvas,cheatCanvas,arcadeChoiceCanvas,creditCanvas,sellUpExitCanvas,notUsed,instructionListCanvas,instructionCanvas,sellUpCanvas]    
 

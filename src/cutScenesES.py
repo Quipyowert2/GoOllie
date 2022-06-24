@@ -18,8 +18,8 @@
 import WorldTypes
 import animationSets
 
-StringCommmand,LinearCommmand,VerticalTab,SpawnObject,MoveObject,setTarget,fadeOutForeground,addStartButton,setAnimation,addEndButton = range(10)
-JakeID,FairyID,SpellID,Jake2ID,LightID,amuletID,fireWorksID = range(7)
+StringCommmand,LinearCommmand,VerticalTab,SpawnObject,MoveObject,setTarget,fadeOutForeground,addStartButton,setAnimation,addEndButton = list(range(10))
+JakeID,FairyID,SpellID,Jake2ID,LightID,amuletID,fireWorksID = list(range(7))
 
 #command is structured: time delay till next command, command type, body
 CS1Commands = [

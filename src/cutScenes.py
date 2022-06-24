@@ -2,8 +2,8 @@
 import WorldTypes
 import animationSets
 
-StringCommmand,LinearCommmand,VerticalTab,SpawnObject,MoveObject,setTarget,fadeOutForeground,addStartButton,setAnimation,addEndButton = range(10)
-JakeID,FairyID,SpellID,Jake2ID,LightID,amuletID,fireWorksID = range(7)
+StringCommmand,LinearCommmand,VerticalTab,SpawnObject,MoveObject,setTarget,fadeOutForeground,addStartButton,setAnimation,addEndButton = list(range(10))
+JakeID,FairyID,SpellID,Jake2ID,LightID,amuletID,fireWorksID = list(range(7))
 
 #command is structured: time delay till next command, command type, body
 CS1Commands = [
@@ -285,4 +285,4 @@ cutScene8 = ["Backdrop03",50,CS8Commands,"cutScene",lower3,upper3]
 #list of all cutscenes
 cutsceneList = [None,cutScene1,cutScene2,cutScene3,cutScene4,cutScene5,cutScene6,cutScene7,cutScene8]
 
-print "cutsceneList English"
+print("cutsceneList English")
