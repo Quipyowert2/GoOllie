@@ -63,19 +63,19 @@ copywrite1 = "all game code is copywrite Charlie Dog Games 2008-2009"
 ###########################################
 # Application initialization data 
 ###########################################
-appIni = {	
-    "mProdName"			: "Go Ollie",
-    "mProductVersion"	: "1.3",
-    "mCompanyName"	: "CDG",
-    "mFullCompanyName"	: "Charlie Dog Games",
-    "mTitle"			: "Go Ollie",
-    "mRegKey"			: "GoOllie",
-    "mWidth"			: 800,
-    "mHeight"			: 600,
-    "mWaitForVSync"		: 1,
-    "mAutoEnable3D"		: 0,
-    "mTest3D"		: 1,
-    "mVSyncUpdates"		: 1,
+appIni = {
+    "mProdName"                 : "Go Ollie",
+    "mProductVersion"   : "1.3",
+    "mCompanyName"      : "CDG",
+    "mFullCompanyName"  : "Charlie Dog Games",
+    "mTitle"                    : "Go Ollie",
+    "mRegKey"                   : "GoOllie",
+    "mWidth"                    : 800,
+    "mHeight"                   : 600,
+    "mWaitForVSync"             : 1,
+    "mAutoEnable3D"             : 0,
+    "mTest3D"           : 1,
+    "mVSyncUpdates"             : 1,
     "mWindowIconBMP": "extraResources/Logos/icon.bmp"
     }
 
@@ -864,7 +864,7 @@ def ressetToStartOfLevel():
 #
 ###########################################
 def mouseEnter():
-	global gamePaused
+        global gamePaused
         if(gamePaused==1):
             gamePaused = 0
         #forceSoundUpdate()
@@ -879,8 +879,8 @@ def mouseEnter():
 #
 ###########################################
 def mouseLeave():
-	global gamePaused
-	gamePaused = 1
+        global gamePaused
+        gamePaused = 1
         #if escapeMenu.active == 0:
          #   escapeMenu.toggle()
 
@@ -892,10 +892,10 @@ def mouseLeave():
 #
 ###########################################
 def mouseMove( x, y ):
-	# store for render
-	global mousex, mousey
-	mousex = x
-	mousey = y
+        # store for render
+        global mousex, mousey
+        mousex = x
+        mousey = y
         if(inEditor):
             moveSelected(x,y)
 #        if(inGUI):
@@ -1177,7 +1177,7 @@ def openWebPage(address):
 # is pressed
 #
 ###########################################def mouseDown( x, y, i ):
-	# store for render
+        # store for render
 def mouseDown( x, y, i ):
         global mdx, mdy, mdn,mouseToggle
         global editorAddObject
@@ -1192,9 +1192,9 @@ def mouseDown( x, y, i ):
         if instructionWait==1:
             instructionWait = 0
         doubleClickDelay = 30
-	mdx = x
-	mdy = y
-	mdn = i
+        mdx = x
+        mdy = y
+        mdn = i
         button1Down = 0
         button2Down = 0
         double1Down = 0
@@ -1240,14 +1240,14 @@ def mouseDown( x, y, i ):
 #
 ###########################################
 def mouseUp( x, y, i ):
-	# store for render
-	global mux, muy, mun,mouseToggle
+        # store for render
+        global mux, muy, mun,mouseToggle
         global inGui
         global button1Down
         global instructionWait
-	mux = x
-	muy = y
-	mun = i
+        mux = x
+        muy = y
+        mun = i
         button1Down = 0
         mouseToggle = 0
         if(inEditor and mdn == 0): #left button
@@ -8181,7 +8181,7 @@ def uncrunchMusic():
         song = levelMusic[index]
         file= 'extraResources/music/'+song
        # print "loading music ",file
-      	tempMusic =  PCR.loadTune( file )
+        tempMusic =  PCR.loadTune( file )
         PCR.unloadTune(tempMusic) 
     uncrunchIndex += 1
 
@@ -8206,18 +8206,18 @@ def unloadLoadingScreen():
         loadingScreenLoaded = 0
     
 def loadBase():
-	#print "loadBase called"
+        #print "loadBase called"
         import Pycap
-	global PC
+        global PC
         global loadingScreen
         global loadingBar
         global logoScreen
         global logoText1
         global logoText2
         global logoBack
-	PC = Pycap
-	import PycapRes
-	global res
+        PC = Pycap
+        import PycapRes
+        global res
         global pubLogo
         global whereIsSnakyJake
         global charlieBark
@@ -8227,25 +8227,25 @@ def loadBase():
             charlieBark = PycapRes.loadSound( 'res/sounds/charlieBark.ogg')
 #            whereIsSnakyJake = PycapRes.loadSound( 'res/sounds/whereIsSnakyJake.ogg')
         if showNonFreeLogos:
-        	logoScreen = PycapRes.loadImage('extraResources/Logos/Logo.jpg')
-	        logoText1 = PycapRes.loadImage('extraResources/Logos/LogoText1.jpg') 
-	        logoText2 = PycapRes.loadImage('extraResources/Logos/LogoText2.jpg') 
-	        logoBack = PycapRes.loadImage('extraResources/Logos/Bgrnd.jpg') 
-        	global logoLoaded 
-	        logoLoaded = 1
- 		pubLogo= PycapRes.loadImage('extraResources/Logos/tweeler.png') 
+                logoScreen = PycapRes.loadImage('extraResources/Logos/Logo.jpg')
+                logoText1 = PycapRes.loadImage('extraResources/Logos/LogoText1.jpg') 
+                logoText2 = PycapRes.loadImage('extraResources/Logos/LogoText2.jpg') 
+                logoBack = PycapRes.loadImage('extraResources/Logos/Bgrnd.jpg') 
+                global logoLoaded 
+                logoLoaded = 1
+                pubLogo= PycapRes.loadImage('extraResources/Logos/tweeler.png') 
         global loadingScreenLoaded
         loadingScreenLoaded = 1
         loadingScreen = PycapRes.loadImage('extraResources/loading/loading.jpg')
         loadingBar = PycapRes.loadImage('extraResources/loading/FairyLoading.jpg')
         #print"loadingScreen"
-	global font22
+        global font22
         global font23
         global font36
         global font38
         global font8
         font8= PycapRes.loadFont( "res/font/Arial8.txt" )
-	font22 = PycapRes.loadFont( "res/font/KomikaText22.txt" )
+        font22 = PycapRes.loadFont( "res/font/KomikaText22.txt" )
         font23 = PycapRes.loadFont( "res/font/KomikaText24.txt" )
         font36 = PycapRes.loadFont( "res/font/KomikaText36.txt" )
         font38 = PycapRes.loadFont( "res/font/KomikaText38.txt" )
@@ -8261,10 +8261,10 @@ def loadBase():
 #
 ###########################################
 def init():
-	#print "init called"
+        #print "init called"
         global totalTimePlayed
         global currentProfile
-	# load the pycap module
+        # load the pycap module
         #openUrl('http://tycho.usno.navy.mil/cgi-bin/timer.pl')          
         #All the game initialisation is done in here so that it can be redone when the game restarts after a game over
         #initialiseGame()
@@ -8272,7 +8272,7 @@ def init():
         if regEntry:
             cheatCanvas.active = int(regEntry)
         regEntry = PC.readReg( "totalTimePlayed" ) 
-	if regEntry:
+        if regEntry:
             totalTimePlayed = int(regEntry)
             totalTimePlayed *= 100
         else:
@@ -8297,13 +8297,13 @@ def init():
                 profile.ressetProfile()
         PC.showMouse(cursorEnabled)
 #        regEntry = PC.readReg( "hardware" ) 
-	#if regEntry:
+        #if regEntry:
          #   if regEntry == "0":
           #      PC.set3DAccelerated(0)
            # else:
             #    PC.set3DAccelerated(1)
         regEntry = PC.readReg( "renderDetail" ) 
-	if regEntry:
+        if regEntry:
             global renderDetailLevel
             renderDetailLevel = int(regEntry)
         global messages 
@@ -8327,7 +8327,7 @@ def init():
 #
 ###########################################
 def fini():
-	#print ("fini called")
+        #print ("fini called")
         #print("Wrote time played",str(int(totalTimePlayed/100)))
         highScoreCanvas.writeScores()
         PC.writeReg( "totalTimePlayed",str(int(totalTimePlayed/100)))
@@ -8564,7 +8564,7 @@ def mouseWheel(delta):
 ###########################################
 def keydown( key ):
         global downKey
-	#print "keydown called with", key
+        #print "keydown called with", key
         global keyArray
         #print(key)
         if(key>0 and key <512):
@@ -8625,7 +8625,7 @@ def anyKeyDown():
     return found
 
 def exitGame(): 
-	return doExit;
+        return doExit;
  
 ###########################################
 oldCameraX=0
@@ -8664,9 +8664,9 @@ def doInstructions(delta):
 ###########################################
 
 def update( delta ):
-	# call the draw function
-	PC.markDirty()
-	global time
+        # call the draw function
+        PC.markDirty()
+        global time
         global inEditor
         global lives
         global score
@@ -9135,13 +9135,13 @@ def renderMidTop():
 def renderGideLines():
     y=0
     while y<y_max:
-	PC.setColour(0,255,0,48 )
-	PC.fillRect( 0, y, 800, 1 )
+        PC.setColour(0,255,0,48 )
+        PC.fillRect( 0, y, 800, 1 )
         y += GridPitchY
     x = 0
     while x < 800:
-	PC.setColour(0,255,0,48 )
-	PC.fillRect( x, 0, 1, 600 )
+        PC.setColour(0,255,0,48 )
+        PC.fillRect( x, 0, 1, 600 )
         x += GridPitchY        
  
  
@@ -9251,8 +9251,8 @@ def renderEditorBackground():
 ###########################################
 def draw():
         global objects
-	# draw some stuff
-	#import PycapRes
+        # draw some stuff
+        #import PycapRes
         global time
         global resx
         global resy 
@@ -9462,10 +9462,10 @@ def RenderHUD():
         global lives
         PC.drawmodeNormal()
         PC.setColour( 255, 255, 255, 255 )
-	PC.setFont( font36 )
+        PC.setFont( font36 )
         PC.setColour( 255, 255, 255, 255 )
         scoreX= gridRight+15
-	PC.setFont( font36 )
+        PC.setFont( font36 )
         scoreString= messages.HUDScoreString
         drawStringDropShadow(scoreString,scoreX,scoreY,254,106,184) 
         length = PCR.stringWidth(scoreString,font36)
@@ -11076,10 +11076,10 @@ class optionsScreen(canvas):
                 string = messages.TutorialDisabled[0]   
             ScreenMessages.setMessageStatic(messages.Tutorials,None,x,y,ToggleTutorials,string)   
             y += 45
-	    if PC.getIs3DAccelerated():
-	    	string = messages.Enabled[0]
-	    else:
-	    	string = messages.Disabled[0]
+            if PC.getIs3DAccelerated():
+                string = messages.Enabled[0]
+            else:
+                string = messages.Disabled[0]
             ScreenMessages.setMessageStatic(messages.Acceleration,None,x,y,ToggleAcceleration,string)  
             y += 45
             string = renderOptions[renderDetailLevel]
@@ -11132,9 +11132,9 @@ def ToggleAcceleration():
     global oldMetaGame
     oldMetaGame = -1
     if PC.getIs3DAccelerated():
-    	PC.set3DAccelerated(0)
+        PC.set3DAccelerated(0)
     else:
-    	PC.set3DAccelerated(1)
+        PC.set3DAccelerated(1)
         
         
 def ToggleDetailLevel():
@@ -12473,7 +12473,7 @@ class AdaptiveDifficultyManager:
         self.checkGameMode()
         PC.setColour( 255, 255, 255, 255 )
         tabX= 300
-	PC.setFont( font22 )
+        PC.setFont( font22 )
         scoreString= "Mode"+str(self.gameMode)+" comp "+str(int(profiles[currentProfile].compensator))
         drawStringDropShadow(scoreString,tabX,60,60,200,0) 
         
