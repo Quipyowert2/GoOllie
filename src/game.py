@@ -6723,7 +6723,7 @@ class ScreenMessage:
                 colour = 255
             else:
                 colour = clamp255(160+(flash*3))
-            color = int(color)
+            colour = int(colour)
             PC.setColour( colour, colour,colour, 255)
             PC.drawImageScaled( graphicName, self.tabX-renderXOffset, self.tabY-renderYOffset,renderWidth,renderHeight)
             if self.mouseOver:
