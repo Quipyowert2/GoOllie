@@ -1028,7 +1028,7 @@ class pointer:
                 pointerName = self.image2
             frame = JPG_Resources[pointerName]
             PC.setColourize(1)
-            PC.setColour(255,255,255,self.currentAlpha) 
+            PC.setColour(255,255,255,int(self.currentAlpha))
             if globalPlayer != None and metaGame == menuItems.game: 
                 if x+cameraX < globalPlayer.x+(self.xSize+globalPlayer.width)/2:
                     direction = -1
@@ -1409,7 +1409,7 @@ class WorldObject:
         global cameraX
         if(self.colourize):
             PC.setColourize(1)
-            PC.setColour(self.tintr,self.tintg,self.tintb,self.tinta)
+            PC.setColour(int(self.tintr),int(self.tintg),int(self.tintb),int(self.tinta))
         else:
             PC.setColourize(0)
         tempx = self.x-cameraX
@@ -1432,12 +1432,12 @@ class WorldObject:
                         gtempx = ghost.x-cameraX
                         if(ghost.facing<0):
                             gtempx+= (self.width*self.scale)
-                        PC.setColour(255,100,100,ghost.alpha)
+                        PC.setColour(255,100,100,int(ghost.alpha))
                         ghost.alpha -= 17
                         PC.drawImageScaled(ghost.frame, gtempx, ghost.y,ghost.facing,self.height*self.scale)
                 if(self.colourize):
                     PC.setColourize(1)
-                    PC.setColour(self.tintr,self.tintg,self.tintb,self.tinta)
+                    PC.setColour(int(self.tintr),int(self.tintg),int(self.tintb),int(self.tinta))
                 else:
                     PC.setColourize(0)
                 PC.drawImageScaled(frame, tempx, tempY,self.facing * self.width*self.scale,self.height*self.scale)
@@ -1448,14 +1448,14 @@ class WorldObject:
             else:
                 if(self.colourize):
                     PC.setColourize(1)
-                    PC.setColour(self.tintr,self.tintg,self.tintb,self.tinta)
+                    PC.setColour(int(self.tintr),int(self.tintg),int(self.tintb),int(self.tinta))
                 else:
                     PC.setColourize(0)
                 PC.drawImageRot(frame, tempx, tempY,self.rotated)
         else:
             if(self.colourize):
                 PC.setColourize(1)
-                PC.setColour(self.tintr,self.tintg,self.tintb,self.tinta)
+                PC.setColour(int(self.tintr),int(self.tintg),int(self.tintb),int(self.tinta))
             else:
                 PC.setColourize(0)
             PC.drawImageRot(frame, tempx, tempY,self.deathTimer/5.0)
@@ -2510,7 +2510,7 @@ class Fairy(physicsObject):
             alpha += 55 * math.sin(self.attackCount)
             red += 55 * math.sin(self.attackCount)
             PC.drawmodeAdd()
-            PC.setColour(red,34,34,alpha)
+            PC.setColour(int(red),34,34,int(alpha))
             PC.drawImageScaled(lightRes,x-cameraX,y-cameraY,lightWidth,lightHeight)
             PC.drawmodeNormal()
         else:
@@ -2568,7 +2568,7 @@ class fireBall(enemy):
                 alpha += 120 * math.sin(self.attackCount)
                 blue += 75 * math.sin(self.attackCount)
                 PC.drawmodeAdd()
-                PC.setColour(34,34,blue,alpha)
+                PC.setColour(34,34,int(blue),int(alpha))
                 PC.drawImageScaled(lightRes,x-cameraX,y-cameraY,lightWidth,lightHeight)
                 PC.drawmodeNormal()
             else:
@@ -4294,7 +4294,7 @@ class Platform(smashable):
         if(inEditor == 0 and self.forceTint == 0): #otherwise we can't ghost none selectable platforms
             self.tinta = 255 
         PC.setColourize(1)        
-        PC.setColour(self.tintr,self.tintg,self.tintb,self.tinta)
+        PC.setColour(int(self.tintr),int(self.tintg),int(self.tintb),int(self.tinta))
         PC.drawImage(self.res,self.x-cameraX,self.y+cameraY)
         PC.setColourize(0)
         if(self.Selected):
@@ -4672,7 +4672,7 @@ class JewelPlatform(Platform):
                     alpha = 32-alpha
                 alpha *= 8
 
-                PC.setColour( 255, 255, 255, alpha )
+                PC.setColour( 255, 255, 255, int(alpha) )
                 PC.drawImage(frame, tempx, tempy)
                 PC.drawmodeNormal()
                 PC.setColourize(0)
@@ -5042,8 +5042,8 @@ class basicTutorial(WorldObject):
             PCR.setFontScale(font22,1)     
     def drawArrow(self):
         PC.setColourize(1)
-        color = 128 + math.sin(self.life/10.0)*128
-        PC.setColour(color,color,color,self.alpha)
+        color = int(128 + math.sin(self.life/10.0)*128)
+        PC.setColour(color,color,color,int(self.alpha))
         arrowRes = JPG_Resources[self.instructionArrow]
         x = self.x-cameraX
         y = self.y-cameraY
@@ -5058,7 +5058,7 @@ class basicTutorial(WorldObject):
     def drawBox(self):
         PC.setColourize(1)
         color = 255
-        PC.setColour(color,color,color,self.alpha)
+        PC.setColour(color,color,color,int(self.alpha))
         boxRes = JPG_Resources[self.instructionBoxLeft]
         x = self.x-cameraX+self.xOffset
         y = self.y-cameraY+self.yOffset
@@ -5352,7 +5352,7 @@ class PowerUp(collectable):
             self.a = 0
         if self.a > 255:
             self.a = 255
-        PC.setColour(self.r,self.g,self.b,self.a)
+        PC.setColour(int(self.r),int(self.g),int(self.b),int(self.a))
         PC.drawImageScaled(lightRes,x-cameraX,y-cameraY,lightWidth,lightHeight)
         PC.setColourize(0)
 
@@ -6050,7 +6050,7 @@ class CSLightBeam(CSObject):
         if alpha > 255:
             alpha = 900 - (self.life*2)
         alpha = clamp255(alpha)
-        PC.setColour( 255,255,255,alpha )
+        PC.setColour( 255,255,255,int(alpha) )
         PC.drawmodeNormal()
         graphicName = JPG_Resources[self.graphic]
         width = PCR.imageWidth( graphicName )*1.5
@@ -6671,22 +6671,22 @@ class ScreenMessage:
             else:
                 y = self.tabY+ 20
             if a>=0:
-                PC.setColour( 0,0,0,a )
+                PC.setColour( 0,0,0,int(a) )
                 PC.drawString( workingString,self.tabX+2-widthDelta, y+2 )    
             if(self.mouseDown):
-                 PC.setColour( 255, 0, 0, alpha )              
+                 PC.setColour( 255, 0, 0, int(alpha) )
             else:        
-                PC.setColour( clamp255(self.R+hint), clamp255(self.G+hint), clamp255(self.B+hint),clamp255(alpha+hint) )
+                PC.setColour( int(clamp255(self.R+hint)), int(clamp255(self.G+hint)), int(clamp255(self.B+hint)),int(clamp255(alpha+hint)) )
             PC.drawString( workingString, self.tabX-widthDelta, y )
             if highLightString:
                # alpha = clamp255(200 + math.sin(self.life/5.0)*50)
-                PC.setColour( 255,0,0,alpha)
+                PC.setColour( 255,0,0,int(alpha))
                 highLightOffset = PCR.stringWidth(right,font)
                 PC.drawString( highLightString, self.tabX-widthDelta+ highLightOffset, y )              
         if(self.graphicRes == -1):
             if self.function and a>0:
                 PC.setColourize(1)
-                PC.setColour( 255,255,255,a )
+                PC.setColour( 255,255,255,int(a) )
                 PC.drawmodeNormal()
                 graphicName = JPG_Resources["selectableIcon"]
                 y = self.tabY - PCR.imageHeight( graphicName )
@@ -6723,6 +6723,7 @@ class ScreenMessage:
                 colour = 255
             else:
                 colour = clamp255(160+(flash*3))
+            color = int(color)
             PC.setColour( colour, colour,colour, 255)
             PC.drawImageScaled( graphicName, self.tabX-renderXOffset, self.tabY-renderYOffset,renderWidth,renderHeight)
             if self.mouseOver:
@@ -6747,7 +6748,7 @@ class ScreenMessage:
                 makeSparkleParticle(x1,y1,bias,0,renderWidth/90.0) 
 
             if (inEditor and self.string != None and self.string != ""):
-                PC.setColour( 255, 0, 0, alpha ) 
+                PC.setColour( 255, 0, 0, int(alpha) ) 
                 PC.drawString( self.string, self.tabX, y )  
     
     def setMessage(self,message,R,G,B,A,font,tabY,scroll,tabX,function,graphic,parameter,fadeUpTime,mouseOverFunction=None,scale = 1.0,flashEnabled=1):
@@ -6903,10 +6904,10 @@ class ScreenMessagesClass:
             font = font22
         if(X==-1):
             X = gridRight+((800-gridRight-PCR.stringWidth(thisString,font))/2)
-        PC.setColour( 0,0,0,128 * alpha/255.0 )
+        PC.setColour( 0,0,0,int(128 * alpha/255.0) )
         PC.setFont(font)
         PC.drawString( thisString, X+3, Y+3 )
-        PC.setColour( R, G, B, A )
+        PC.setColour( int(R), int(G), int(B), int(A) )
         PC.drawString( thisString, X, Y )
         
     def fadeAndClear(self):
@@ -7750,13 +7751,13 @@ class trailObject:
             PC.setColourize(1)  
             PC.drawmodeNormal()   
             alpha = clamp255(removeTrailCount * 5)
-            PC.setColour(255,255,255,alpha)
+            PC.setColour(255,255,255,int(alpha))
             PC.drawImageScaled( self.backGraphic, x-4, y-4,width+8,height+8)        
             PC.drawImageScaled( self.graphic, x, y,width,height)
             if(self.hintToRemove):
                 PC.drawmodeAdd()
                 flashValue =clamp255(120 + math.sin(self.life/self.flashSpeed)*150)
-                PC.setColour( 255, 255, 255, flashValue )
+                PC.setColour( 255, 255, 255, int(flashValue) )
                 PC.drawImageScaled( self.graphic, x, y,width,height)
                 PC.drawmodeNormal()
                 PC.setColourize(0)     
@@ -9187,7 +9188,7 @@ def renderGridBackGround():
         #graphic = JPG_Resources['gridBackDrop']    
         #PC.drawImage( graphic, x1, 0)
         #PC.setColour(255,0,32,100 )
-        PC.setColour(155+(100*math.sin(gridFlash)),0,32,200 )
+        PC.setColour(int(155+(100*math.sin(gridFlash))),0,32,200 )
         PC.fillRect(x1,600-gridFillHeight, x2,gridFillHeight)
         PC.setColour(32,0,240,100 )
         PC.fillRect(x1,0, x2,600-gridFillHeight)
@@ -9291,7 +9292,7 @@ def renderpubLogo():
         if fadeAlpha > 255:
             fadeAlpha = 255
         PC.setColourize(1)
-        PC.setColour(0,0,0,fadeAlpha)
+        PC.setColour(0,0,0,int(fadeAlpha))
         PC.fillRect( 0,0,800,600)
         PC.setColourize(0)
 
@@ -9323,7 +9324,7 @@ def renderLogo():
         if fadeAlpha > 255:
             fadeAlpha = 255
         PC.setColourize(1)
-        PC.setColour(0,0,0,fadeAlpha)
+        PC.setColour(0,0,0,int(fadeAlpha))
         PC.fillRect( 0,0,800,600)
         PC.setColourize(0)
     
@@ -9382,7 +9383,7 @@ def renderLoadingScreen():
         if alpha > 255:
             alpha = 255
         PC.setColourize(1)
-        PC.setColour(0,0,0,alpha)
+        PC.setColour(0,0,0,int(alpha))
         PC.fillRect( 0,0,800,600)
         PC.setColourize(0)
     
@@ -9444,7 +9445,7 @@ def missedCoinRender():
 def drawStringDropShadow(string,x,y,r,g,b):        
         PC.setColour( 0, 0, 0, 180 ) 
         PC.drawString(string, x+3, y+3) 
-        PC.setColour( r, g, b, 255 )
+        PC.setColour( int(r), int(g), int(b), 255 )
         PC.drawString(string, x, y) 
  
 def setglobalDebug1(value):
@@ -9518,7 +9519,7 @@ class classMapName:
             string = "Level: "+str(thisNumber)+" "+levelMetaData.title
             PC.setColour( 0, 0, 0, 180 ) 
             PC.drawString(string, self.x+3, self.y+3) 
-            PC.setColour(self.r, self.g, self.b, self.alpha )
+            PC.setColour(int(self.r), int(self.g), int(self.b), int(self.alpha) )
             PC.drawString(string, self.x, self.y) 
             
     def tick(self,delta):
@@ -9538,7 +9539,7 @@ def renderStoryLevelFinish():
       rectAlpha = (EndLength-FinishTimer)*5
       if(rectAlpha>200):
           rectAlpha = 150
-      PC.setColour(0,0,0,rectAlpha)
+      PC.setColour(0,0,0,int(rectAlpha))
       PC.fillRect(0,0,800,600)
 
 def renderActionLevelFinish(): 
@@ -9546,7 +9547,7 @@ def renderActionLevelFinish():
       rectAlpha = (EndLength-FinishTimer)*5
       if(rectAlpha>200):
           rectAlpha = 150
-      PC.setColour(0,0,0,rectAlpha)
+      PC.setColour(0,0,0,int(rectAlpha))
       PC.fillRect(0,0,800,600)
      
 def StartGameDraw():
@@ -10200,7 +10201,7 @@ class HighScores(canvas):
         for score in self.scores:
 
             if(index != scorePos):
-                PC.setColour( 255-(index*10), 150+(index*10),0,255 )
+                PC.setColour( int(255-(index*10)), int(150+(index*10)),0,255 )
                 PC.setFont( font22 )
                 PC.drawString(score.name, x, self.y )
             else:
@@ -11692,7 +11693,7 @@ class storyScreen(canvas):
             alpha = 255
             font = font22
             PCR.setFontScale(font,.75)
-            PC.setColour( 40,230,40,alpha)
+            PC.setColour( 40,230,40,int(alpha))
             PC.setFont( font )
             if string1 == "":
                 string1 = point[1]
@@ -11881,7 +11882,7 @@ class particle:
             screenX = self.x-cameraX-(screenWidth/2)
             screenY = self.y-cameraY-(screenHeight/2)
 
-            PC.setColour(self.r,self.g,self.b,self.a)
+            PC.setColour(int(self.r),int(self.g),int(self.b),int(self.a))
             if(self.frame >=0):
                 frame = self.frame
                 if self.additive:
@@ -12587,7 +12588,7 @@ class InstructionManagerClass:
     def render(self):
         if  self.backAlpha: 
             PC.setColourize(1)          
-            PC.setColour( 255, 255, 255, self.backAlpha)
+            PC.setColour( 255, 255, 255, int(self.backAlpha))
             res = JPG_Resources['helpBack'] 
             PC.drawmodeNormal()
             PC.drawImageScaled( res, self.rectX,self.rectY,self.rectWidth,self.rectHeight)
@@ -12598,7 +12599,7 @@ class InstructionManagerClass:
         self.frame = JPG_Resources[name]
         if(self.frame != None):
             PC.setColourize(1)          
-            PC.setColour( 255, 255, 255, self.backAlpha)
+            PC.setColour( 255, 255, 255, int(self.backAlpha))
             width = PCR.imageWidth(self.frame)
             height = PCR.imageHeight(self.frame)
             PC.drawImageScaled( self.frame, x, y,width*scale,height*scale)
@@ -12802,7 +12803,7 @@ class cutSceneClass(canvas):
             y = 0
             PC.drawImage( res, x, y)  
             x += 300           
-        PC.setColour(0,0,0,self.ForeGroundAlpha)
+        PC.setColour(0,0,0,int(self.ForeGroundAlpha))
         PC.fillRect( 0,0,800,600)
 
             
@@ -12848,7 +12849,7 @@ class FadeManagerClass:
     def render(self):
         if self.alpha >0:
             PC.setColourize(1)
-            PC.setColour(0,0,0,self.alpha)
+            PC.setColour(0,0,0,int(self.alpha))
             PC.fillRect( 0,0,800,600)
             PC.setColourize(0)
             
