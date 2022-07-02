@@ -8176,7 +8176,7 @@ def uncrunchMusic():
     global fileIndex
     global uncrunchIndex
     step = 15  #tony - this is set up so that it will uncrunch all the music when all files are loaded
-    index = uncrunchIndex/step
+    index = uncrunchIndex//step
     if index >=0 and index < len(levelMusic) and uncrunchIndex%step==0:
         song = levelMusic[index]
         file= 'extraResources/music/'+song
