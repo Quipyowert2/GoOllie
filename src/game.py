@@ -209,22 +209,22 @@ class Medalion:
                 if self.visible  or metaGame != menuItems.game:
                     if index == self.Speed and smartUsed and forcedOn == 0:
                         newRes = self.emptySmall[index]
-                        PC.drawImage(newRes, x, y)                        
+                        PC.drawImage(newRes, int(x), int(y))
                     else:
-                        PC.drawImage(newRes, x, y)               
+                        PC.drawImage(newRes, int(x), int(y))
                         if(segmentActive or forcedOn) and test == index:
                             PC.drawmodeAdd()
-                            PC.drawImage(newRes, x, y)
+                            PC.drawImage(newRes, int(x), int(y))
                             PC.drawmodeNormal()
             else:
                 if segmentActive or forcedOn == 1:
                     newRes = self.resBig[index]
                 else:
                     newRes = self.emptyBig[index]
-                PC.drawImage(newRes, x, y)               
+                PC.drawImage(newRes, int(x), int(y))
                 if segmentActive and test == index:
                     PC.drawmodeAdd()
-                    PC.drawImage(newRes, x, y)
+                    PC.drawImage(newRes, int(x), int(y))
                     PC.drawmodeNormal()
               
               
@@ -1952,7 +1952,7 @@ class Spider(enemy):
             webY = self.topExtent        
             PC.setClipRect(0,self.topExtent,800,self.y-self.topExtent+5)
             frame = JPG_Resources[self.webGraphic]
-            PC.drawImage(frame,webX-cameraX,webY-cameraY)
+            PC.drawImage(frame,int(webX-cameraX),int(webY-cameraY))
             PC.clearClipRect()
         enemy.render(self)
     
@@ -2068,7 +2068,8 @@ class Balloon(enemy):
             stringX = self.x + (self.width/2) - (self.stringWidth/2)-cameraX+2
             PC.drawmodeNormal()
             PC.setColourize(0)
-            PC.drawImage(self.stringRes,stringX,stringY)
+
+            PC.drawImage(self.stringRes,int(stringX),int(stringY))
             PC.drawmodeNormal()        
         
         
@@ -4295,7 +4296,7 @@ class Platform(smashable):
             self.tinta = 255 
         PC.setColourize(1)        
         PC.setColour(int(self.tintr),int(self.tintg),int(self.tintb),int(self.tinta))
-        PC.drawImage(self.res,self.x-cameraX,self.y+cameraY)
+        PC.drawImage(self.res,int(self.x-cameraX),int(self.y+cameraY))
         PC.setColourize(0)
         if(self.Selected):
             PC.setColour( 128, 128, 128, 128)
@@ -4315,7 +4316,7 @@ class Platform(smashable):
                   PC.setColour( 200, 200, 200, 200)
                 else:
                     PC.setColour( 200, 200, 200, 128)
-                PC.drawImage(self.res,self.x-cameraX,self.y+cameraY)
+                PC.drawImage(self.res,int(self.x-cameraX),int(self.y+cameraY))
                 PC.drawmodeNormal()
                 PC.setColourize(0)
 
@@ -4663,7 +4664,7 @@ class JewelPlatform(Platform):
             width= PCR.imageWidth( frame ) 
             tempx = self.x-cameraX-width/2+self.width/2
             tempy = self.y-1
-            PC.drawImage(frame, tempx, tempy)
+            PC.drawImage(frame, int(tempx), int(tempy))
             if(hint>1):
                 PC.drawmodeAdd()
                 PC.setColourize(1)
@@ -4673,7 +4674,7 @@ class JewelPlatform(Platform):
                 alpha *= 8
 
                 PC.setColour( 255, 255, 255, int(alpha) )
-                PC.drawImage(frame, tempx, tempy)
+                PC.drawImage(frame, int(tempx), int(tempy))
                 PC.drawmodeNormal()
                 PC.setColourize(0)
             
@@ -5048,7 +5049,7 @@ class basicTutorial(WorldObject):
         x = self.x-cameraX
         y = self.y-cameraY
         if self.arrowDir >0:
-            PC.drawImage(arrowRes,x,y)
+            PC.drawImage(arrowRes,int(x),int(y))
         else:
             width = PCR.imageWidth( arrowRes )
             height = PCR.imageHeight( arrowRes )
@@ -5062,13 +5063,13 @@ class basicTutorial(WorldObject):
         boxRes = JPG_Resources[self.instructionBoxLeft]
         x = self.x-cameraX+self.xOffset
         y = self.y-cameraY+self.yOffset
-        PC.drawImage(boxRes,x,y)
+        PC.drawImage(boxRes,int(x),int(y))
         
         boxRes = JPG_Resources[self.instructionBoxRight]
         width = PCR.imageWidth( boxRes )
         x = self.x-cameraX+self.xOffset+self.boxWidth-width
         y = self.y-cameraY+self.yOffset
-        PC.drawImage(boxRes,x,y)        
+        PC.drawImage(boxRes,int(x),int(y))
         
         PC.setColourize(0)
 
@@ -6102,7 +6103,7 @@ class HUDElement(WorldObject):
         self.graphic = self.upGraphic
     def render(self):
             texture = JPG_Resources[self.graphic]
-            PC.drawImage( texture, self.x,self.y)
+            PC.drawImage( texture, int(self.x),int(self.y))
             PC.setColour( 255,0,0,255)
             PC.setFont( font22 )
             PC.drawString(self.string, self.x+5, self.y+40 )
@@ -6730,7 +6731,7 @@ class ScreenMessage:
                 PC.drawmodeAdd() 
                 if inEditor:
                     PC.setColour( 255, 255,255, 180)
-                    PC.drawImage( graphicName, self.tabX, self.tabY)
+                    PC.drawImage( graphicName, int(self.tabX), int(self.tabY))
                 else:
                     PC.setColour( 255, 255,255, 55)
                     PC.drawImageScaled( graphicName, self.tabX-renderXOffset, self.tabY-renderYOffset,renderWidth,renderHeight)
@@ -7686,7 +7687,7 @@ def RenderGrid():
                         x+= (tile.XOffset*GridPitchX)
                     y = y_max-(y_pos*GridPitchY)
                     y-= (tile.YOffset*GridPitchY)
-                    PC.drawImage( graphic, x, y)
+                    PC.drawImage( graphic, int(x), int(y))
                     if((x_pos+y_pos) == int(gridSweep) %80):
                         PC.drawmodeAdd()
                         PC.setColourize(1)
@@ -7694,7 +7695,7 @@ def RenderGrid():
                             PC.setColour( 255, 255, 255, 100)
                         else:
                             PC.setColour( 255, 255, 255, 0 )
-                        PC.drawImage( graphic, x, y)
+                        PC.drawImage( graphic, int(x), int(y))
                         PC.drawmodeNormal()
                         PC.setColourize(0)
                     
@@ -9112,8 +9113,8 @@ def renderMidbottom():
     for item in levelMetaData.LowerScenery:
         width = item.width
         y = y_max - item.height
-        graphic = JPG_Resources[item.name]  
-        PC.drawImage( graphic, item.X-cameraX/2, y)  
+        graphic = JPG_Resources[item.name]
+        PC.drawImage( graphic, int(item.X-cameraX/2), y)
         lastItemX = item.X+width
     checkRemoveMid(levelMetaData.LowerScenery)
     if lastItemX<cameraX/2+x_max+(width/2):  #add on width/2 so we get some overlap
@@ -9126,7 +9127,7 @@ def renderMidTop():
         width = item.width
         y = 0
         graphic = JPG_Resources[item.name]  
-        PC.drawImage( graphic, item.X-cameraX/2, y)
+        PC.drawImage( graphic, int(item.X-cameraX/2), y)
         lastItemX = item.X+width
     checkRemoveMid(levelMetaData.UpperScenery)
     if lastItemX<cameraX/2+x_max+(width/2):
@@ -9153,10 +9154,10 @@ def renderBack():
         graphic = backDropManager.backDropResource 
         width = PCR.imageWidth( graphic )  
         x = (x%width)-width
-        PC.drawImage( graphic, x, 0)
+        PC.drawImage( graphic, int(x), 0)
         #if this image doesn't fill the screen then repeat it!
         if(x+width<800):
-            PC.drawImage( graphic, x+width, 0) 
+            PC.drawImage( graphic, int(x+width), 0)
     else:
         if backDropManager.backDropLoaded == "Backdrop4":
             PC.setColour(10,50,10,255)
@@ -9195,7 +9196,7 @@ def renderGridBackGround():
         PC.setColourize(1)
         PC.setColour(255,255,255,80)
         graphic = JPG_Resources['gridBackDrop']
-        PC.drawImage( graphic, x1, 0)
+        PC.drawImage( graphic, int(x1), 0)
         
 def tickGridBackGround(delta): 
     global gridFlash 
@@ -9305,7 +9306,7 @@ def renderLogo():
     #import PycapRes
     if showNonFreeLogos:
         PC.drawImage( logoBack ,0, 0)
-        PC.drawImage( logoScreen ,x, y)
+        PC.drawImage( logoScreen ,int(x), int(y))
         angle = (logoCount+250-startLogoFade)/300.0
         if (int(logoCount)%40)<20:
             logoText = logoText1
@@ -9430,13 +9431,13 @@ def RenderLives():
     if(lives==0):
         return
     if lives>5:
-        PC.drawImage( JPG_Resources['Life'], ThisX-130, 5)   
+        PC.drawImage( JPG_Resources['Life'], int(ThisX)-130, 5)
         liveString = " x "+str(lives)
         drawStringDropShadow(liveString,ThisX-90,55,60,200,0)         
     else:
         for life in range(lives):
             ThisX -= 44
-            PC.drawImage( JPG_Resources['Life'], ThisX, 5)
+            PC.drawImage( JPG_Resources['Life'], int(ThisX), 5)
             
 def missedCoinRender():
     if levelCompleted(finalLevel) and missedCoin ==0:
@@ -11550,7 +11551,7 @@ class storyScreen(canvas):
         self.frame1Y = 0
         self.frameScale = 0.75
         canvas.render(self)
-        PC.drawImage( graphic,campaignXOffset,campaignYOffset)
+        PC.drawImage( graphic,int(campaignXOffset),int(campaignYOffset))
         medalion.render(655,20,0)
         self.tintPannel(2,229,165)
         self.tintPannel(3,403,171)
@@ -12792,7 +12793,7 @@ class cutSceneClass(canvas):
             width = PCR.imageWidth(res)
             height = PCR.imageHeight(res)
             y = 600 - height
-            PC.drawImage( res, x, y)  
+            PC.drawImage( res, int(x), int(y))
             x += width + 50
         x = 100
          
@@ -12801,7 +12802,7 @@ class cutSceneClass(canvas):
             width = PCR.imageWidth(res)
             height = PCR.imageHeight(res)
             y = 0
-            PC.drawImage( res, x, y)  
+            PC.drawImage( res, int(x), int(y))
             x += 300           
         PC.setColour(0,0,0,int(self.ForeGroundAlpha))
         PC.fillRect( 0,0,800,600)
@@ -12895,10 +12896,10 @@ class sellUpScreen(canvas):
         x = 0
         y = 300
         image = JPG_Resources["AW1"]
-        PC.drawImage(image,x,y)
+        PC.drawImage(image,int(x),int(y))
         
         image = JPG_Resources["AW2"]
-        PC.drawImage(image,400,y)
+        PC.drawImage(image,400,int(y))
                 
     def backToStory(self):
         fadeManager.fadeDown(menuItems.storyCanvas)
