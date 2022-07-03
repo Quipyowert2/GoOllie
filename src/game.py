@@ -371,7 +371,7 @@ def findJumpLookUp(table):
     if globalPlayer.onTrampoline:
         height = 3 + globalPlayer.onTrampoline.jumpTableOffset
     #height = 2
-    thisTable = jumpArray[height]
+    thisTable = jumpArray[int(height)]
     return thisTable[table]
 
 class MouseOver:
