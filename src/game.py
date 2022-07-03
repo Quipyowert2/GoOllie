@@ -12982,7 +12982,7 @@ def numberToString(number):
     while newNumber>999:
         numberString = str(newNumber)[-3:]
         output = ","+numberString+output
-        newNumber /= 1000
+        newNumber //= 1000
     output = str(newNumber)+output 
     return output
     
