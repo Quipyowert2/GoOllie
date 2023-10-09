@@ -33,7 +33,9 @@ int main(int argc, char** argv) {
   app.SetAppResourceFolder("/usr/share/games/goollie");
 
   app.Init(argc, argv);
+  Py_BEGIN_ALLOW_THREADS
   app.Start();
+  Py_END_ALLOW_THREADS
   app.Shutdown();
 
   return 0;
