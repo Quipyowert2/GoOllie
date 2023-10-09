@@ -11004,7 +11004,7 @@ def startArcadeGame(startingSection):
     inGUI = 0  
    # ScreenMessages.clearMessages()
     arcadeMode = 1
-    levelNumber = leveleStarts[startingSection]
+    levelNumber = leveleStarts[int(startingSection)]
     initialiseLevel()
     trailGame.emptytrail()
     EmptyGrid()
